@@ -6,74 +6,99 @@
         @page { size: A4; margin: 0; }
         body {
             margin: 0; padding: 0;
-            font-family: "Hiragino Sans", "Meiryo", sans-serif;
-            background-color: #FFDE00; /* Bright Yellow Background */
+            font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif;
+            background-color: #FFDE00; /* Vibrant Yellow */
             width: 210mm; height: 297mm;
+            display: flex; flex-direction: column; align-items: center;
         }
-        .gradient-card {
+        /* 1) Shrunken Header Card */
+        .hero-card {
             background: linear-gradient(145deg, #FF1E56 0%, #FF8A00 50%, #8A2BE2 100%);
-            margin: 10mm; border-radius: 20mm;
-            padding: 20mm; color: white;
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+            width: 170mm; margin-top: 15mm; border-radius: 15mm;
+            padding: 12mm; color: white; box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+            text-align: left;
         }
-        .label { background: rgba(0,0,0,0.3); padding: 5px 15px; border-radius: 5px; font-size: 12pt; display: inline-block; margin-bottom: 15px; }
-        h1 { font-size: 50pt; margin: 10px 0; line-height: 1.1; font-weight: 900; }
-        .tagline { font-size: 16pt; font-weight: bold; margin-bottom: 25px; }
+        .volume-bar { display: flex; align-items: center; gap: 4px; margin-bottom: 10px; }
+        .bar { width: 3px; background: white; border-radius: 2px; }
+        .top-tag { background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 4px; font-size: 10pt; letter-spacing: 1px; font-weight: bold; }
         
-        .white-content {
-            background: white;
-            margin: -15mm 15mm 0 15mm;
-            padding: 20mm 15mm;
-            border-radius: 15mm;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-        .yellow-banner {
-            background: #FFDE00; padding: 5px 20px;
-            border: 3px solid black; display: inline-block;
-            font-weight: bold; font-size: 18pt;
-            transform: rotate(-1deg); margin-bottom: 25px;
-        }
-        .main-text { font-size: 14pt; line-height: 1.8; color: #333; margin-bottom: 30px; }
-        .highlight { color: #FF1E56; font-weight: bold; }
+        .tagline-jp { font-size: 16pt; font-weight: bold; margin: 10px 0 2px 0; }
+        /* Chinese subtitle in thin italic */
+        .tagline-ch { font-size: 13pt; font-style: italic; font-weight: 300; opacity: 0.9; margin-bottom: 15px; }
         
-        .info-box { font-size: 13pt; margin-bottom: 20px; }
-        .info-row { margin-bottom: 12px; display: flex; }
-        .icon { width: 40px; font-size: 20pt; }
+        h1 { font-size: 42pt; margin: 0; line-height: 1.1; font-weight: 900; }
 
-        .footer {
-            background: black; color: #FFDE00;
-            position: absolute; bottom: 0; width: 100%;
-            padding: 15px 0; text-align: center;
-            font-weight: bold; letter-spacing: 2px;
+        /* 3) Main Event Info Section */
+        .white-content {
+            background: white; width: 160mm;
+            margin-top: -8mm; padding: 15mm;
+            border-radius: 12mm; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 2; text-align: center;
         }
+        .yellow-label {
+            background: #FFDE00; padding: 5px 20px; border: 3px solid black;
+            display: inline-block; font-weight: 900; font-size: 20pt;
+            transform: rotate(-1.5deg); margin-bottom: 25px;
+        }
+        .event-details { text-align: left; margin: 20px 0; font-size: 14pt; line-height: 2; }
+        .detail-row { display: flex; border-bottom: 1px solid #eee; padding: 8px 0; }
+        .label { width: 80px; font-weight: bold; color: #FF1E56; }
+
+        /* 4) Call to Action & QR */
+        .cta-section { margin-top: 20px; display: flex; align-items: center; justify-content: space-around; background: #fff8e1; padding: 15px; border-radius: 10px; }
+        .qr-box { width: 80px; height: 80px; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 8pt; border: 1px solid #ccc; }
+        .cta-btn {
+            background: #FF1E56; color: white; padding: 15px 30px;
+            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 16pt;
+            box-shadow: 0 4px 10px rgba(255, 30, 86, 0.4);
+        }
+
+        /* 5) Footer Jump-out phrase */
+        .final-quote {
+            margin-top: 15mm; width: 170mm;
+            font-size: 15pt; font-weight: 900; color: #333;
+            text-align: center; line-height: 1.6;
+        }
+        .highlight-pop { color: #FF1E56; font-size: 18pt; border-bottom: 3px solid #FFDE00; }
     </style>
 </head>
 <body>
-    <div class="gradient-card">
-        <div class="label">BEAT BEYOND WORDS</div>
-        <div class="tagline">言葉より、早くつながる。<br>跨越語言，用擊鼓交朋友。</div>
-        <h1>ドンドコ、<br>熊本。</h1>
+
+    <div class="hero-card">
+        <div class="volume-bar">
+            <div class="bar" style="height: 10px;"></div>
+            <div class="bar" style="height: 18px;"></div>
+            <div class="bar" style="height: 12px;"></div>
+            <span class="top-tag">BEAT BEYOND WORDS</span>
+        </div>
+        <div class="tagline-jp">言葉より、早くつながる。</div>
+        <div class="tagline-ch">跨越語言，用擊鼓交朋友。</div>
+        <h1>ドンドコ、熊本。</h1>
     </div>
 
     <div class="white-content">
-        <div class="yellow-banner">コトバはいらない</div>
-        <div class="main-text">
-            リズムや身体のやりとりを通して、<span class="highlight">日本と台湾の仲間たち</span>が言葉を使わずに自然につながれる交流の場です。
+        <div class="yellow-label">コトバはいらない</div>
+        
+        <div class="event-details">
+            <div class="detail-row"><span class="label">いつ？</span><div><b>5/22（金）〜 5/24（日）</b><br><small>1回1時間。みんなの都合に合わせて調整します！</small></div></div>
+            <div class="detail-row"><span class="label">どこで？</span><div><b>熊本市国際交流会館</b></div></div>
+            <div class="detail-row"><span class="label">特典</span><div>記念品 ＆ 3人以上で<span style="color:#FF1E56; font-weight:bold;">温泉券</span>プレゼント！</div></div>
         </div>
 
-        <div class="info-box">
-            <div class="info-row"><span class="icon">📅</span> <div><b>5/22（金）〜 5/24（日）</b><br><small>1回1時間。みんなの予定に合わせて調整します！</small></div></div>
-            <div class="info-row"><span class="icon">📍</span> <div><b>熊本市国際交流会館</b></div></div>
-            <div class="info-row"><span class="icon">🎁</span> <div><b>特典：</b>【台湾×熊本】本場の味をプチギフトに！ ＆ 3人以上で<span class="highlight">温泉券</span>プレゼント！</div></div>
+        <div class="cta-section">
+            <div style="text-align:left;">
+                <div style="font-weight:bold; color:#FF1E56;">参加申し込み</div>
+                <div style="font-size:9pt; color:#666;">カメラでQRをスキャン！</div>
+            </div>
+            <div class="qr-box">QR CODE<br>HERE</div>
+            <a href="https://docs.google.com/forms/d/1qjmFrMdqVHYJHFMkKhnKv7Y_R_OKsKIfi24M-qOY3eo/viewform" class="cta-btn">申し込む 🥁</a>
         </div>
-        
-        <p style="text-align:center; font-size:10pt; color:#666;">
-            お申し込みはこちらから：<br>
-            https://docs.google.com/forms/d/1qjmFrMdqVHYJHFMkKhnKv7Y_R_OKsKIfi24M-qOY3eo/viewform
-異なる文化を持つ人たちと一緒に音を鳴らすだけで、心地よい共鳴が生まれます。
-        </p>
     </div>
 
-    <div class="footer">KUMAMOTO × TAIWAN PERCUSSION EXCHANGE</div>
+    <div class="final-quote">
+        言葉はなくても、<span class="highlight-pop">異なる文化を持つ人たちと一緒に</span><br>
+        音を鳴らすだけで、最高の共鳴が生まれます。
+    </div>
+
 </body>
 </html>
