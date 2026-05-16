@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beat Beyond Words - 橫式大圖 KV 區塊 (終極細節還原版)</title>
+    <title>Beat Beyond Words - 橫式大圖 KV 區塊 (精準還原版)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=LineSeedJP:wght@900&family=Noto+Sans+JP:wght@500;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
@@ -27,33 +27,33 @@
             padding: 20px;
         }
 
-        /* 核心主視覺：100% 還原高飽和度、極具發光感的「紅 -> 亮粉橘 -> 霓虹紫」漸層 */
+        /* 核心主視覺：100% 複製原版明亮、帶有發光感的「紅 -> 螢光橘粉 -> 淺紫」漸層 */
         .kv-container {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #FF0000 0%, #FF5500 45%, #7A00FF 100%);
+            /* 調整漸層錨點，讓明亮的橘紅色域大面積展開，避免紫色過多導致變深變暗 */
+            background: linear-gradient(105deg, #FF0000 0%, #FF5500 35%, #FF007F 70%, #944BB2 100%);
             border: 8px solid #000;
             border-radius: 40px;
-            padding: 55px 65px;
+            padding: 55px 70px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            box-shadow: 0 0 35px rgba(255, 85, 0, 0.4);
         }
 
         /* 頂部區域：膠囊背景 + 音波橫向排列 */
         .kv-header {
             display: flex;
             align-items: center;
-            align-self: flex-start; /* 緊貼左側 */
-            background-color: rgba(0, 0, 0, 0.55); /* 100% 還原 Beat Beyond Words 的黑色背景塊 */
+            align-self: flex-start; 
+            background-color: rgba(0, 0, 0, 0.55); /* 黑色膠囊背景塊 */
             padding: 10px 24px;
             border-radius: 25px;
             gap: 15px;
         }
 
-        /* 1) 補回遺漏的白色音波 Sound Bar */
+        /* 左側白色音波 Sound Bar */
         .sound-wave {
             display: flex;
             gap: 5px;
@@ -98,22 +98,23 @@
             letter-spacing: 1px;
         }
 
-        /* 下半部：3) 徹底放大、極度銳利（SHARP）的主題字 */
+        /* 下半部：徹底加大、具有絕對黑邊與陰影的 Sharp 字體 */
         .main-title {
             color: #FFF;
             font-family: 'LineSeedJP', 'Noto Sans JP', sans-serif;
-            font-size: 130px; /* 大幅增加字體體積，極具震撼力 */
+            font-size: 145px; /* 再次放大體積，完美還原滿版比例 */
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
             margin-top: auto;
-            /* 終極文字立體黑邊與極度銳利陰影設定 */
-            -webkit-text-stroke: 4px #000; /* 強制文字邊緣進行向量黑描邊 */
+            white-space: nowrap;
+            /* 強制邊緣銳利化（SHARP）的黑色描邊與經典立體陰影 */
+            -webkit-text-stroke: 4px #000;
             text-shadow: 
                 -4px -4px 0 #000,  
                  4px -4px 0 #000,
                 -4px  4px 0 #000,
                  4px  4px 0 #000,
-                 8px  8px 0px #000; /* 經典日式重磅立體黑影 */
+                 8px  8px 0px #000; /* 重磅日式實心黑影 */
         }
     </style>
 </head>
