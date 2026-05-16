@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beat Beyond Words - 橫式大圖 KV 區塊</title>
+    <title>Beat Beyond Words - 橫式大圖 KV 區塊 (終極細節還原版)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=LineSeedJP:wght@700;900&family=Noto+Sans+TC:wght@500;900&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=LineSeedJP:wght@900&family=Noto+Sans+JP:wght@500;900&family=Noto+Sans+TC:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         /* 鎖定 1600px x 550px 的實體大圖 160x55 cm 比例 */
@@ -27,55 +27,93 @@
             padding: 20px;
         }
 
-        /* 核心主視覺：完全比照原版色彩「紅 -> 粉紅橙 -> 淺紫」的明亮柔和漸層 */
+        /* 核心主視覺：100% 還原高飽和度、極具發光感的「紅 -> 亮粉橘 -> 霓虹紫」漸層 */
         .kv-container {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #E60012 0%, #F16522 50%, #B28BC2 100%);
+            background: linear-gradient(135deg, #FF0000 0%, #FF5500 45%, #7A00FF 100%);
             border: 8px solid #000;
             border-radius: 40px;
-            padding: 50px 60px;
+            padding: 55px 65px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
+            box-shadow: 0 0 35px rgba(255, 85, 0, 0.4);
         }
 
-        /* 上半部：純文字的 BEAT BEYOND WORDS (無黑色膠囊底塊) */
+        /* 頂部區域：膠囊背景 + 音波橫向排列 */
+        .kv-header {
+            display: flex;
+            align-items: center;
+            align-self: flex-start; /* 緊貼左側 */
+            background-color: rgba(0, 0, 0, 0.55); /* 100% 還原 Beat Beyond Words 的黑色背景塊 */
+            padding: 10px 24px;
+            border-radius: 25px;
+            gap: 15px;
+        }
+
+        /* 1) 補回遺漏的白色音波 Sound Bar */
+        .sound-wave {
+            display: flex;
+            gap: 5px;
+            align-items: flex-end;
+        }
+        .sound-wave div {
+            width: 5px;
+            background-color: #FFF;
+            border-radius: 3px;
+        }
+        .sound-wave div:nth-child(1) { height: 18px; }
+        .sound-wave div:nth-child(2) { height: 32px; }
+        .sound-wave div:nth-child(3) { height: 14px; }
+        
+        /* 膠囊內的純白文字 */
         .tag-text {
             color: #FFF;
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 900;
             letter-spacing: 2px;
         }
 
-        /* 中間：中日雙語雙色副標題 */
+        /* 中間：中日雙語宣傳副標 */
         .slogan-group {
-            margin-top: 20px;
+            margin-top: 15px;
         }
+        /* 日文副標題維持手寫圓體感 */
         .sub-slogan-ja {
             color: #FFF;
-            font-size: 38px;
-            font-weight: 900;
-            letter-spacing: 1px;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-size: 42px; 
+            font-weight: 500;
+            letter-spacing: 1.5px;
         }
+        /* 中文副標題：黃色斜體 */
         .sub-slogan-zh {
             color: #FFDE00;
-            font-size: 26px;
+            font-size: 28px;
             font-weight: 700;
             font-style: italic;
             margin-top: 10px;
             letter-spacing: 1px;
         }
 
-        /* 下半部：最震撼、放大不糊的「ドンドコ、熊本。」核心大字 */
+        /* 下半部：3) 徹底放大、極度銳利（SHARP）的主題字 */
         .main-title {
             color: #FFF;
-            font-size: 105px; /* 依照原版大圖比例加大字體 */
+            font-family: 'LineSeedJP', 'Noto Sans JP', sans-serif;
+            font-size: 130px; /* 大幅增加字體體積，極具震撼力 */
             font-weight: 900;
-            text-shadow: 5px 5px 0px #000;
+            letter-spacing: 2px;
             margin-top: auto;
-            letter-spacing: 3px;
+            /* 終極文字立體黑邊與極度銳利陰影設定 */
+            -webkit-text-stroke: 4px #000; /* 強制文字邊緣進行向量黑描邊 */
+            text-shadow: 
+                -4px -4px 0 #000,  
+                 4px -4px 0 #000,
+                -4px  4px 0 #000,
+                 4px  4px 0 #000,
+                 8px  8px 0px #000; /* 經典日式重磅立體黑影 */
         }
     </style>
 </head>
@@ -83,7 +121,12 @@
 
     <div class="kv-container">
         
-        <div class="tag-text">BEAT BEYOND WORDS</div>
+        <div class="kv-header">
+            <div class="sound-wave">
+                <div></div><div></div><div></div>
+            </div>
+            <div class="tag-text">BEAT BEYOND WORDS</div>
+        </div>
         
         <div class="slogan-group">
             <div class="sub-slogan-ja">言葉より、早くつながる。</div>
