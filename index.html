@@ -2,102 +2,151 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beat Beyond Words - 橫式大圖 KV 區塊</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LineSeedJP:wght@700;900&family=Noto+Sans+TC:wght@500;900&family=Noto+Sans+JP:wght@700;900&display=swap" rel="stylesheet">
+    
     <style>
-        @page { size: A4; margin: 0; }
+        /* 鎖定 1600px x 550px 的實體大圖 160x55 cm 比例 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            margin: 0; padding: 0;
-            font-family: "Helvetica Neue", Arial, "Hiragino Sans", sans-serif;
-            background-color: #FFDE00; /* Vibrant Yellow */
-            width: 210mm; height: 297mm;
-            display: flex; flex-direction: column; align-items: center;
+            font-family: 'LineSeedJP', 'Noto Sans JP', 'Noto Sans TC', sans-serif;
+            background-color: #FFDE00; /* 鮮黃外圍背景，完美對接您的 Canva 底色 */
+            width: 1600px;
+            height: 550px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
-        /* 1) Shrunken Header Card */
-        .hero-card {
-            background: linear-gradient(145deg, #FF1E56 0%, #FF8A00 50%, #8A2BE2 100%);
-            width: 170mm; margin-top: 15mm; border-radius: 15mm;
-            padding: 12mm; color: white; box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
-            text-align: left;
+
+        /* 核心主視覺：紅紫漸層大圓角色塊，加上外圍霓虹紫光與黑粗框 */
+        .kv-container {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #E60012 0%, #920783 50%, #4A0099 100%);
+            border: 8px solid #000;
+            border-radius: 40px;
+            box-shadow: 0 0 30px rgba(146, 7, 131, 0.8); /* 邊緣霓虹紫光 */
+            padding: 45px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
         }
-        .volume-bar { display: flex; align-items: center; gap: 4px; margin-bottom: 10px; }
-        .bar { width: 3px; background: white; border-radius: 2px; }
-        .top-tag { background: rgba(0,0,0,0.3); padding: 4px 10px; border-radius: 4px; font-size: 10pt; letter-spacing: 1px; font-weight: bold; }
+
+        /* 上半部：音波圖標與 BEAT BEYOND WORDS 膠囊標籤 */
+        .kv-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .sound-wave {
+            display: flex;
+            gap: 5px;
+        }
+        .sound-wave div {
+            width: 6px;
+            background-color: #FFF;
+            border-radius: 3px;
+        }
+        .sound-wave div:nth-child(1) { height: 25px; }
+        .sound-wave div:nth-child(2) { height: 40px; }
+        .sound-wave div:nth-child(3) { height: 18px; }
         
-        .tagline-jp { font-size: 16pt; font-weight: bold; margin: 10px 0 2px 0; }
-        /* Chinese subtitle in thin italic */
-        .tagline-ch { font-size: 13pt; font-style: italic; font-weight: 300; opacity: 0.9; margin-bottom: 15px; }
-        
-        h1 { font-size: 42pt; margin: 0; line-height: 1.1; font-weight: 900; }
-
-        /* 3) Main Event Info Section */
-        .white-content {
-            background: white; width: 160mm;
-            margin-top: -8mm; padding: 15mm;
-            border-radius: 12mm; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            z-index: 2; text-align: center;
-        }
-        .yellow-label {
-            background: #FFDE00; padding: 5px 20px; border: 3px solid black;
-            display: inline-block; font-weight: 900; font-size: 20pt;
-            transform: rotate(-1.5deg); margin-bottom: 25px;
-        }
-        .event-details { text-align: left; margin: 20px 0; font-size: 14pt; line-height: 2; }
-        .detail-row { display: flex; border-bottom: 1px solid #eee; padding: 8px 0; }
-        .label { width: 80px; font-weight: bold; color: #FF1E56; }
-
-        /* 4) Call to Action & QR */
-        .cta-section { margin-top: 20px; display: flex; align-items: center; justify-content: space-around; background: #fff8e1; padding: 15px; border-radius: 10px; }
-        .qr-box { width: 80px; height: 80px; background: #ddd; display: flex; align-items: center; justify-content: center; font-size: 8pt; border: 1px solid #ccc; }
-        .cta-btn {
-            background: #FF1E56; color: white; padding: 15px 30px;
-            border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 16pt;
-            box-shadow: 0 4px 10px rgba(255, 30, 86, 0.4);
+        .tag-pill {
+            background-color: rgba(0,0,0,0.4);
+            color: #FFF;
+            padding: 8px 22px;
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
-        /* 5) Footer Jump-out phrase */
-        .final-quote {
-            margin-top: 15mm; width: 170mm;
-            font-size: 15pt; font-weight: 900; color: #333;
-            text-align: center; line-height: 1.6;
+        /* 中間：中日雙語雙色副標題 */
+        .slogan-group {
+            margin-top: 20px;
         }
-        .highlight-pop { color: #FF1E56; font-size: 18pt; border-bottom: 3px solid #FFDE00; }
+        .sub-slogan-ja {
+            color: #FFF;
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        .sub-slogan-zh {
+            color: #FFDE00;
+            font-size: 28px;
+            font-weight: 700;
+            font-style: italic;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* 下半部：最震撼、放大不糊的「ドンドコ、熊本。」核心大字 */
+        .main-title {
+            color: #FFF;
+            font-size: 96px; /* 加大字體，在寬螢幕下視覺張力極強 */
+            font-weight: 900;
+            text-shadow: 5px 5px 0px #000;
+            margin-top: auto;
+            letter-spacing: 3px;
+        }
+
+        /* 裝飾元件 1：右上角漂浮的音符組 */
+        .notes-deco {
+            position: absolute;
+            right: 180px;
+            top: 45px;
+            font-size: 55px;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 3px 3px 0px #000;
+            line-height: 1.2;
+            pointer-events: none;
+        }
+
+        /* 裝飾元件 2：最右上角的可愛迷你太鼓 */
+        .drum-deco {
+            position: absolute;
+            right: 45px;
+            top: 40px;
+            width: 110px;
+            height: 110px;
+            object-fit: contain;
+            transform: rotate(15deg);
+            filter: drop-shadow(4px 4px 0px #000);
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero-card">
-        <div class="volume-bar">
-            <div class="bar" style="height: 10px;"></div>
-            <div class="bar" style="height: 18px;"></div>
-            <div class="bar" style="height: 12px;"></div>
-            <span class="top-tag">BEAT BEYOND WORDS</span>
-        </div>
-        <div class="tagline-jp">言葉より、早くつながる。</div>
-        <div class="tagline-ch">跨越語言，用擊鼓交朋友。</div>
-        <h1>ドンドコ、熊本。</h1>
-    </div>
-
-    <div class="white-content">
-        <div class="yellow-label">コトバはいらない</div>
+    <div class="kv-container">
         
-        <div class="event-details">
-            <div class="detail-row"><span class="label">いつ？</span><div><b>5/22（金）〜 5/24（日）</b><br><small>1回1時間。みんなの都合に合わせて調整します！</small></div></div>
-            <div class="detail-row"><span class="label">どこで？</span><div><b>熊本市国際交流会館</b></div></div>
-            <div class="detail-row"><span class="label">特典</span><div>記念品 ＆ 3人以上で<span style="color:#FF1E56; font-weight:bold;">温泉券</span>プレゼント！</div></div>
-        </div>
-
-        <div class="cta-section">
-            <div style="text-align:left;">
-                <div style="font-weight:bold; color:#FF1E56;">参加申し込み</div>
-                <div style="font-size:9pt; color:#666;">カメラでQRをスキャン！</div>
+        <div class="kv-header">
+            <div class="sound-wave">
+                <div></div><div></div><div></div>
             </div>
-            <div class="qr-box">QR CODE<br>HERE</div>
-            <a href="https://docs.google.com/forms/d/1qjmFrMdqVHYJHFMkKhnKv7Y_R_OKsKIfi24M-qOY3eo/viewform" class="cta-btn">申し込む 🥁</a>
+            <div class="tag-pill">BEAT BEYOND WORDS</div>
         </div>
-    </div>
+        
+        <div class="slogan-group">
+            <div class="sub-slogan-ja">言葉より、早くつながる。</div>
+            <div class="sub-slogan-zh">跨越語言，用節奏交朋友。</div>
+        </div>
+        
+        <div class="main-title">ドンドコ、熊本。</div>
 
-    <div class="final-quote">
-        言葉はなくても、<span class="highlight-pop">異なる文化を持つ人たちと一緒に</span><br>
-        音を鳴らすだけで、最高の共鳴が生まれます。
+        <div class="notes-deco">♫ ♬ ♩</div>
+
+        <img class="drum-deco" src="drum.png" alt="鼓" onerror="this.src='https://img.icons8.com/emoji/96/drum-emoji.png'">
+        
     </div>
 
 </body>
